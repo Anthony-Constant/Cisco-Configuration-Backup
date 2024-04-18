@@ -25,6 +25,11 @@ The script utilizes the `serial` library to establish a connection with the Cisc
 4. Enter the COM port number, BAUD rate, password (if required), and output file name as prompted.
 5. The running configuration will be saved to the specified file.
 
+## Dependencies
+
+- Python 3.x
+- pyserial library
+
 ## License
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
