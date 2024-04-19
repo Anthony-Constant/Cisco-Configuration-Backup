@@ -24,22 +24,27 @@ def read_until_prompt(ser, prompt, timeout=5):
 def backup_running_config(serial_port, baud_rate, password, output_file):
     try:
         # Serial connection setup
+        print("Connecting to the device...")
         ser = serial.Serial(serial_port, baud_rate, timeout=1)
         ser.write(b"\r\n")
+        print("Initiating backup of the running configuration...")
 
         # Give some time for the serial connection to stabilize
         time.sleep(2)
 
         # Send command to the device to enter privileged EXEC mode
+        print("Entering privileged EXEC mode...")
         ser.write(b"enable\r\n")
         
         # Check if already in enable mode
         output = read_until_prompt(ser, b"#")
         if b"Password:" in output:
+            print("Sending password...")
             ser.write(password.encode('utf-8') + b"\r\n")
             read_until_prompt(ser, b"#")
 
         # Send command to the device to set terminal length and get the running configuration
+        print("Setting terminal length and retrieving running configuration...")
         ser.write(b"terminal length 0\r\n")
         read_until_prompt(ser, b"#")
         ser.write(b"show running-config\r\n")
@@ -48,6 +53,7 @@ def backup_running_config(serial_port, baud_rate, password, output_file):
         time.sleep(5)  # Adjust this delay as needed
 
         # Read the output until no data is received for a short period
+        print("Waiting for configuration output...")
         config_output = b""
         while True:
             data = ser.read(4096)
