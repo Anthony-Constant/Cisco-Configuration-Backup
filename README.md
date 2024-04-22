@@ -1,4 +1,4 @@
-# Cisco Device Configuration Backup Script
+# Cisco-Configuration-Backup
 
 This Python script allows you to back up the running configuration of Cisco devices such as switches and routers via a serial connection.
 
