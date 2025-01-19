@@ -30,6 +30,9 @@ The script utilizes the `serial` library to establish a connection with the Cisc
 - Python 3.x
 - pyserial library
 
+## Demo 
+https://www.youtube.com/watch?v=r2n1BjdigVA&ab_channel=AnthonyConstant
+
 ## License
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
